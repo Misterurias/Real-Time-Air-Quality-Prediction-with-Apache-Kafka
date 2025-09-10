@@ -2,7 +2,6 @@
 
 **Version:** Apache Kafka 3.9.1 (latest release with ZooKeeper)  
 
----
 
 ## Components
 
@@ -26,7 +25,6 @@
       --replication-factor 1
     ```
 
----
 
 ## Architecture Decisions
 
@@ -35,14 +33,12 @@
 - **Single Partition**: Dataset is relatively small; 1 partition avoids offset complexity.  
 - **File-Based Logs**: Both producer and consumer log to files for transparency and monitoring.  
 
----
 
 ## Error Handling and Resilience
 
 - **Producer**: Retry logic with exponential backoff (up to 5 attempts).  
 - **Consumer**: Graceful error logging per batch, no crash on malformed data.  
 
----
 
 ## Monitoring
 
@@ -51,7 +47,6 @@
   - Dropped rows  
   - Unhealthy NO₂ counts  
 
----
 
 ## Academic Integrity Note
 

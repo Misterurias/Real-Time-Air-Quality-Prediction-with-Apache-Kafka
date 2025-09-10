@@ -1,7 +1,5 @@
 # Preprocessing Strategy
 
----
-
 ## Dataset Overview
 
 - **Source**: UCI Air Quality Dataset (9,358 hourly sensor observations)  
@@ -11,13 +9,11 @@
 
 - **Goal**: Deliver cleaned, validated data suitable for real-time ingestion  
 
----
 
 ## Hybrid Preprocessing Approach
 
 We split responsibilities between **producer-side cleaning** (before Kafka) and **consumer-side validation** (after Kafka).  
 
----
 
 ### Producer-Side Cleaning
 
@@ -44,7 +40,6 @@ We split responsibilities between **producer-side cleaning** (before Kafka) and 
 - 6,941 valid rows sent  
 - 2,530 dropped (≈27%)  
 
----
 
 ### Consumer-Side Validation
 
@@ -64,14 +59,12 @@ We split responsibilities between **producer-side cleaning** (before Kafka) and 
 - **Producer**: Logs valid rows sent vs. dropped  
 - **Consumer**: Logs processed rows, unhealthy counts, throughput  
 
----
 
 ## Final Dataset
 
 - Cleaned CSV with headers  
 - Includes **Date** + **Time** columns  
 
----
 
 ## Academic Integrity Note
 
