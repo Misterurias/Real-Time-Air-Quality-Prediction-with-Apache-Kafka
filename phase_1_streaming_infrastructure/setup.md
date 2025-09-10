@@ -1,36 +1,59 @@
-setup_and_architecture.md
-Kafka Setup and Configuration
+# Kafka Setup and Configuration
 
-Version: Apache Kafka 3.9.1 (last release with ZooKeeper).
+**Version:** Apache Kafka 3.9.1 (latest release with ZooKeeper)  
 
-ZooKeeper: Required for broker coordination. Launched via bin/zookeeper-server-start.sh config/zookeeper.properties.
+---
 
-Broker: Started with bin/kafka-server-start.sh config/server.properties.
+## Components
 
-Topic: Created air_quality with 1 partition and replication factor 1 (sufficient for local development).
+- **ZooKeeper**: Required for broker coordination.  
+  - Launched via:  
+    ```bash
+    bin/zookeeper-server-start.sh config/zookeeper.properties
+    ```
 
-bin/kafka-topics.sh --create \
-  --topic air_quality \
-  --bootstrap-server localhost:9092 \
-  --partitions 1 \
-  --replication-factor 1
+- **Broker**: Started with:  
+    ```bash
+    bin/kafka-server-start.sh config/server.properties
+    ```
 
-Architecture Decisions
+- **Topic**: Created `air_quality` with 1 partition and replication factor 1 (sufficient for local development).  
+    ```bash
+    bin/kafka-topics.sh --create \
+      --topic air_quality \
+      --bootstrap-server localhost:9092 \
+      --partitions 1 \
+      --replication-factor 1
+    ```
 
-Local Deployment: Chosen for simplicity and grading — no containerization or cluster needed.
+---
 
-ZooKeeper: Even though ZooKeeper is being phased out, this assignment requires learning fundamentals, so 3.9.1 ensures compatibility.
+## Architecture Decisions
 
-Single Partition: Our dataset is relatively small and the goal is correctness, not horizontal scaling. A single partition avoids offset management complexity.
+- **Local Deployment**: Chosen for simplicity and grading — no containerization or cluster needed.  
+- **ZooKeeper**: Still used despite deprecation to ensure compatibility for this assignment.  
+- **Single Partition**: Dataset is relatively small; 1 partition avoids offset complexity.  
+- **File-Based Logs**: Both producer and consumer log to files for transparency and monitoring.  
 
-File-Based Logs: Both producer and consumer log to logs/ for transparency and monitoring.
+---
 
-Error Handling and Resilience
+## Error Handling and Resilience
 
-Producer: Retry logic with exponential backoff (up to 5 attempts).
+- **Producer**: Retry logic with exponential backoff (up to 5 attempts).  
+- **Consumer**: Graceful error logging per batch, no crash on malformed data.  
 
-Consumer: Graceful error logging per batch, no crash on malformed data.
+---
 
-Monitoring: Metrics are logged every 100 rows for throughput, drops, and unhealthy NO₂ counts.
+## Monitoring
 
-This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025). Prompts and responses used are documented in Appendix A (appendix_ai_usage/appendix_kafka.txt).
+- Metrics logged every 100 rows:  
+  - Throughput  
+  - Dropped rows  
+  - Unhealthy NO₂ counts  
+
+---
+
+## Academic Integrity Note
+
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_kafka.txt`).

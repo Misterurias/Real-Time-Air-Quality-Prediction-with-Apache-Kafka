@@ -1,68 +1,79 @@
-preprocessing_strategy.md
-Dataset Overview
+# Preprocessing Strategy
 
-Source: UCI Air Quality Dataset (9,358 hourly sensor observations).
+---
 
-Challenges: Missing values encoded as -200, occasional junk rows (;;;;;;;;;;;;;;;).
+## Dataset Overview
 
-Goal: Deliver cleaned, validated data suitable for real-time ingestion.
+- **Source**: UCI Air Quality Dataset (9,358 hourly sensor observations)  
+- **Challenges**:  
+  - Missing values encoded as `-200`  
+  - Occasional junk rows (`;;;;;;;;;;;;;;;`)  
 
-Hybrid Preprocessing Approach
+- **Goal**: Deliver cleaned, validated data suitable for real-time ingestion  
 
-We adopted a hybrid strategy, splitting responsibilities between producer and consumer.
+---
 
-Producer-Side Cleaning (before Kafka)
+## Hybrid Preprocessing Approach
 
-Why: Prevents bad data from polluting the stream.
+We split responsibilities between **producer-side cleaning** (before Kafka) and **consumer-side validation** (after Kafka).  
 
-Steps:
+---
 
-Convert -200 → None.
+### Producer-Side Cleaning
 
-Drop rows with all missing values or invalid types.
+**Why:** Prevents invalid data from polluting the stream  
 
-Range validation:
+**Steps:**  
+1. Convert `-200 → None`  
+2. Drop rows with all missing values or invalid types  
+3. Normalize numeric formats (commas → dots, type coercion)  
+4. Range validation:  
 
-CO(GT): 0–50 mg/m³
+| Feature   | Valid Range     | Unit |
+|-----------|----------------|------|
+| CO(GT)    | 0–50           | mg/m³ |
+| NOx(GT)   | 0–5000         | ppb |
+| NO2(GT)   | 0–1000         | µg/m³ |
+| T         | -50–60         | °C |
+| RH        | 0–100          | % |
+| AH        | ≥ 0            | – |
 
-NOx(GT): 0–5000 ppb
+5. Impute missing `T` with `0`  
 
-NO2(GT): 0–1000 µg/m³
+**Result:**  
+- 6,941 valid rows sent  
+- 2,530 dropped (≈27%)  
 
-T: -50–60 °C
+---
 
-RH: 0–100 %
+### Consumer-Side Validation
 
-AH: ≥0
+**Why:** Defense-in-depth + operational checks  
 
-Impute missing temperature (T) with 0.
+**Steps:**  
+1. Re-validate `CO(GT)` presence  
+2. Add **NO₂ status flag**:  
+   - `Unhealthy` if NO₂ > 200 µg/m³  
+   - `OK` otherwise  
+3. Append valid batches to `cleaned_air_quality.csv`  
 
-Result: 6,941 valid rows sent (≈2,530 dropped before send).
+---
 
-Consumer-Side Validation (after Kafka)
+## Monitoring & Metrics
 
-Why: Defense-in-depth + operational checks.
+- **Producer**: Logs valid rows sent vs. dropped  
+- **Consumer**: Logs processed rows, unhealthy counts, throughput  
 
-Steps:
+---
 
-Re-validate CO(GT) presence.
+## Final Dataset
 
-Enrich rows with NO2_status:
+- Cleaned CSV with headers  
+- Includes **Date** + **Time** columns  
 
-Unhealthy if NO₂ > 200 µg/m³.
+---
 
-OK otherwise.
+## Academic Integrity Note
 
-Append valid batches to cleaned_air_quality.csv.
-
-Monitoring: Logs batch size, throughput, dropped rows (after receiving), and unhealthy NO₂ counts.
-
-Quality Metrics
-
-Producer: Reports total rows scanned, valid vs dropped counts.
-
-Consumer: Reports rows processed, unhealthy percentage, throughput.
-
-Final Dataset: Cleaned CSV with headers, preserved Date + Time.
-
-This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025). Prompts and responses used are documented in Appendix A (appendix_ai_usage/appendix_kafka.txt).
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_kafka.txt`).
