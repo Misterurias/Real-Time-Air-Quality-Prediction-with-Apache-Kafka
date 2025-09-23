@@ -27,29 +27,29 @@ These results confirm the dataset’s suitability for predictive modeling, while
 ## Exploratory Data Analysis (EDA)
 
 ### 1. Time Series Visualizations
-![CO over time](../output/figures/ts_CO_mg_m3.png)  
-![NOx over time](../output/figures/ts_NOx_ppb.png)  
-![Benzene over time](../output/figures/ts_Benzene_ug_m3.png)
+![CO over time](../outputs/figures/ts_CO_mg_m3.png)  
+![NOx over time](../outputs/figures/ts_NOx_ppb.png)  
+![Benzene over time](../outputs/figures/ts_Benzene_ug_m3.png)
 
 - Long-term declining trend in CO and Benzene, likely reflecting cleaner vehicles/policies.  
 - NOx and NO2 show strong fluctuations tied to urban traffic cycles.  
 
 ### 2. Daily Cycles
-![CO daily cycle](../output/figures/daily_cycle_CO_mg_m3.png)  
-![Benzene daily cycle](../output/figures/daily_cycle_Benzene_ug_m3.png)
+![CO daily cycle](../outputs/figures/daily_cycle_CO_mg_m3.png)  
+![Benzene daily cycle](../outputs/figures/daily_cycle_Benzene_ug_m3.png)
 
 - Morning peaks (~7–9 AM) across CO, NOx, Benzene correspond to rush-hour traffic.  
 - Evening secondary peaks (~6–8 PM) also visible.  
 
 ### 3. Weekly Cycles
-![CO weekly cycle](../output/figures/weekly_cycle_CO_mg_m3.png)  
-![NMHC weekly cycle](../output/figures/weekly_cycle_NMHC_ppb.png)
+![CO weekly cycle](../outputs/figures/weekly_cycle_CO_mg_m3.png)  
+![NMHC weekly cycle](../outputs/figures/weekly_cycle_NMHC_ppb.png)
 
 - Weekday concentrations higher than weekends.  
 - Clear reduction in pollutants on Saturday/Sunday → strong evidence of traffic influence.  
 
 ### 4. Cross-Pollutant Correlations
-![Correlation Matrix](../output/figures/correlation_matrix.png)  
+![Correlation Matrix](../outputs/figures/correlation_matrix.png)  
 
 - **CO ↔ Benzene:** r ≈ 0.93 (very strong).  
 - **CO ↔ NMHC:** r ≈ 0.89.  
@@ -60,8 +60,8 @@ These results confirm the dataset’s suitability for predictive modeling, while
 ## Advanced Analytics
 
 ### 1. Autocorrelation & Partial Autocorrelation
-![ACF CO](../output/figures/acf_CO_mg_m3.png)  
-![PACF CO](../output/figures/pacf_CO_mg_m3.png)
+![ACF CO](../outputs/figures/acf_CO_mg_m3.png)  
+![PACF CO](../outputs/figures/pacf_CO_mg_m3.png)
 
 - ACF shows strong persistence at 24-hour lags → daily cycles dominate.  
 - PACF suggests dependencies fade after a few lags → useful for short-term forecasting models.  
@@ -72,9 +72,9 @@ Example (Benzene):
 - **Seasonal:** repeating daily/weekly cycles.  
 - **Residual:** short-term unexplained variability (candidate anomalies).  
 
-![Benzene STL trend](../output/figures/stl_trend_Benzene_ug_m3.png)  
-![Benzene STL seasonal](../output/figures/stl_seasonal_Benzene_ug_m3.png)  
-![Benzene STL residual](../output/figures/stl_resid_Benzene_ug_m3.png)
+![Benzene STL trend](../outputs/figures/stl_trend_Benzene_ug_m3.png)  
+![Benzene STL seasonal](../outputs/figures/stl_seasonal_Benzene_ug_m3.png)  
+![Benzene STL residual](../outputs/figures/stl_resid_Benzene_ug_m3.png)
 
 ### 3. Anomaly Detection
 Anomalies flagged where pollutant levels exceeded **3σ from the seasonal mean**.  
