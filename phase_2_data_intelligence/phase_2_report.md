@@ -112,3 +112,9 @@ We now have:
 
 This provides a strong foundation for Phase 3: **building predictive models** that leverage these temporal and relational structures for real-time air quality forecasting.
 
+**Note: Additional information regarding the strategic analysis report can be found in the PDF version called `Phase 2 Strategic Analysis Report.pdf` within the Phase 2 folder**
+
+## Academic Integrity Note
+
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_kafka.txt`).

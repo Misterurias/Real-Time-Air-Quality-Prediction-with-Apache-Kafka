@@ -161,3 +161,8 @@ This serves as the formal Phase 2 deliverable.
 4. **Report** → Summarize findings & implications (`phase_2_report.md`)
 
 ✅ Following these steps guarantees that all Phase 2 deliverables can be recreated end-to-end.
+
+## Academic Integrity Note
+
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_kafka.txt`).
