@@ -41,7 +41,6 @@ If new packages are added, update the lock file:
 pip freeze > requirements.txt
 ```
 
----
 
 ## 2. Data Preparation
 
