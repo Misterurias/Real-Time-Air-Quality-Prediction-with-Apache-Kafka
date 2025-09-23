@@ -1,10 +1,8 @@
-````markdown
+
 # Phase 2 Setup & Reproducibility Guide
 
 This document explains how to recreate the Phase 2 workflow for **Advanced Environmental Data Intelligence and Pattern Analysis**.  
 Following these steps will ensure the same results, figures, and tables can be reproduced.
-
----
 
 ## 1. Environment Setup
 
@@ -72,7 +70,6 @@ outputs/tables/clean_hourly.csv
 
 ✅ Check terminal logs for dropped rows due to invalid timestamps.
 
----
 
 ## 3. Exploratory Data Analysis (EDA)
 
@@ -97,7 +94,6 @@ This generates:
   * Weekly cycle CSVs
   * Correlation matrix CSV
 
----
 
 ## 4. Advanced Analytics
 
@@ -125,7 +121,6 @@ outputs/figures/
 outputs/tables/
 ```
 
----
 
 ## 5. Report
 
@@ -147,7 +142,6 @@ Contents:
 
 This serves as the formal Phase 2 deliverable.
 
----
 
 ## 6. Reproducibility Notes
 
@@ -159,7 +153,6 @@ This serves as the formal Phase 2 deliverable.
 * Figures may differ slightly depending on library version, but overall trends remain consistent.
 * To reset outputs before re-running, clear the `outputs/` folder.
 
----
 
 ## 7. Workflow Summary
 
