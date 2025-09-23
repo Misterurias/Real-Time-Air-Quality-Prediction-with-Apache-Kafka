@@ -1,0 +1,14 @@
+# phase_2_data_intelligence/config.yaml
+dataset_path: "./AirQualityData/cleaned_air_quality.csv"
+datetime_col: "DateTime"
+timezone: "UTC"                             # dataset is hourly; set if needed
+pollutants: ["CO(GT)", "NMHC(GT)", "C6H6(GT)", "NOx(GT)", "NO2(GT)"]
+# Friendly aliases for plot titles / column renames
+aliases:
+  "CO(GT)": "CO_mg_m3"
+  "NMHC(GT)": "NMHC_ppb"
+  "C6H6(GT)": "Benzene_ug_m3"
+  "NOx(GT)": "NOx_ppb"
+  "NO2(GT)": "NO2_ug_m3"
+negative_200_is_missing: true
+output_dir: "outputs"
