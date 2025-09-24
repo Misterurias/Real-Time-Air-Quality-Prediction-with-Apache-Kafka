@@ -63,3 +63,7 @@ Phase 3 successfully demonstrates the full operationalization of predictive anal
 
 The framework provides a foundation for scaling to other pollutants and datasets, with monitoring and retraining for long-term deployment.
 
+## Academic Integrity Note
+
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_phase3_model_development.txt`) and (`appendix_ai_usage/appendix_deployment_section_steps.txt`).

@@ -117,4 +117,4 @@ This provides a strong foundation for Phase 3: **building predictive models** th
 ## Academic Integrity Note
 
 This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025).  
-Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_kafka.txt`).
+Prompts and responses are documented in **Appendix A** (`appendix_ai_usage/appendix_phase2_planning.txt`).
