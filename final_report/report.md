@@ -1,1 +1,8 @@
-Parts of this assignment (e.g., initial scaffolding of producer/consumer scripts, draft documentation, and explanation of Kafka concepts) were developed with the assistance of ChatGPT (OpenAI, GPT-5, 2025). All outputs were reviewed, validated, and adapted by me.
+# Final Report
+Final report detail is located in `Air Quality Prediction Report.pdf`
+
+## Academic Integrity Note
+
+This assignment was completed with the use of generative AI (OpenAI ChatGPT, GPT-5, September 2025). 
+All outputs were reviewed, validated, and adapted by me. 
+All AI Usage and interactions are documented for each phase in the `appendix_ai_usage` folder
