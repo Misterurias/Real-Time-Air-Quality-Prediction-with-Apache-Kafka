@@ -1,4 +1,3 @@
-```markdown
 # Phase 3: Predictive Analytics Model Development and Deployment
 
 ## Strategic Objective
