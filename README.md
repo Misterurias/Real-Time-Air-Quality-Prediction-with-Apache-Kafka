@@ -58,7 +58,3 @@ The project follows a modular architecture:
 **Business Value:**  
 - Real-time predictions enable **early warnings** for hazardous air conditions.  
 - Provides **data-driven insights** for traffic regulation, industrial activity monitoring, and public health advisories.  
-
----
-
-## 🗂️ Repository Structure
